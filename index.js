@@ -8,24 +8,20 @@ const server = http.createServer((request, response) => {
 	console.log('[Response] ' + response.statusCode);
 	switch (request.url) {
 		case '/jobs':
-			response.write('<h1>Welcome to the Jobs Section</h1>');
-			response.write('<hr>');
-			response.end();
+			let jobs = fs.readFileSync('./jobs.html');
+			response.end(jobs);
 			break;
 		case '/about':
-			response.write('<h1>Welcome to the About Section</h1>');
-			response.write('<hr>');
-			response.end();
+			let about = fs.readFileSync('./about.html');
+			response.end(about);
 			break;
 		case '/contact':
-			response.write('<h1>Welcome to the Contact Section</h1>');
-			response.write('<hr>');
-			response.end();
+			let contact = fs.readFileSync('./contact.html');
+			response.end(contact);
 			break;
 		default:
-			response.write('<h1>Welcome to my Node Server</h1>');
-			response.write('<hr>');
-			response.end();
+			let index = fs.readFileSync('./index.html');
+			response.end(index);
 			break;
 	}
 	
